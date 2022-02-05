@@ -15,15 +15,15 @@ app.get('/healthcheck', function(req,res){
 
 const client_id = process.env.CL_ID
 const client_secret = process.env.CL_SEC
-const auth_token = Buffer.from(`${client_id}:${client_secret}`, 'utf-8').toString('base64');
+// const auth_token = Buffer.from(`${client_id}:${client_secret}`, 'utf-8').toString('base64');
 const redirect_uri = process.env.REDIRECT_URI
-const refresh_token = process.env.TOKEN;
 
 app.get("/callback", (req, res) => {
 });
 
-app.get('/refresh_token', (req, res) => {
+app.get('/recently_played', (req, res) => {
   const refresh_token = process.env.TOKEN;
+
   axios({
     method: 'post',
     url: 'https://accounts.spotify.com/api/token',
@@ -33,41 +33,85 @@ app.get('/refresh_token', (req, res) => {
     }),
     headers: {
       'content-type': 'application/x-www-form-urlencoded',
-      Authorization: `Basic ${new Buffer.from(`${client_id}:${client_secret}`).toString('base64')}`,
-    },
+        Authorization: `Basic ${new Buffer.from(`${client_id}:${client_secret}`).toString('base64')}`,
+    }
   })
-    .then(response => {
-      access_token = response.data.access_token
-      res.send({access_token: access_token})
+  // second resp
+  .then(response => {
+    access_token = response.data.access_token
+    return axios({
+      method: 'get',
+      url: 'https://api.spotify.com/v1/me/player/recently-played',
+      headers: {
+        // 'content-type': 'application/x-www-form-urlencoded',
+          Authorization: `Bearer ${access_token}`,
+      }
     })
-    .catch(error => {
-      res.send(error);
-    });
+    .then((recentlyPlayedResponse) => recentlyPlayedResponse.json())    
+      .then((recentlyPlayedResponseJSON) => {
+        console.log(recentlyPlayedResponseJSON)
+        res.json(recentlyPlayedResponseJSON)
+      })
+    // .then((recentlyPlayedResponse) => {
+      
+    //   res.send(recentlyPlayedResponse)
+    // })
+    // .then((recentlyPlayedResponseJSON) => {
+    //   res.send(recentlyPlayedResponseJSON)
+    // })
+
+  })
+  .catch(error => {
+    res.send(error);
+  })
   });
 
 
-
-const getRecentlyPlayed = () => {
-  axios({
-    method: 'get',
-    url: 'https://api.spotify.com/v1/me/player/recently-played',
-    headers: {
-    Authorization: `Bearer ${getAccessToken}`
-},
-  })
-
-}
-
-app.get('/api', function(req,res){
-  getRecentlyPlayed()
-  .then((resp) => resp.json()
-  )
-    .then((result) => {
-      res.send(result);
+  app.get('/refresh_token', (req, res) => {
+    const refresh_token = process.env.TOKEN;
+    axios({
+      method: 'post',
+      url: 'https://accounts.spotify.com/api/token',
+      data: querystring.stringify({
+        grant_type: 'refresh_token',
+        refresh_token: refresh_token
+      }),
+      headers: {
+        'content-type': 'application/x-www-form-urlencoded',
+        Authorization: `Basic ${new Buffer.from(`${client_id}:${client_secret}`).toString('base64')}`,
+      },
     })
+      .then(response => {
+        access_token = response.data.access_token
+        res.send({access_token: access_token})
+      })
+      .catch(error => {
+        res.send(error);
+      });
+    });
+  
 
-}
-)
+// const getRecentlyPlayed = () => {
+//   axios({
+//     method: 'get',
+//     url: 'https://api.spotify.com/v1/me/player/recently-played',
+//     headers: {
+//     Authorization: `Bearer ${getAccessToken}`
+// },
+//   })
+
+// }
+
+// app.get('/api', function(req,res){
+//   getRecentlyPlayed()
+//   .then((resp) => resp.json()
+//   )
+//     .then((result) => {
+//       res.send(result);
+//     })
+
+// }
+// )
 
   // let access_token = await api.request
 // client frontend handler getRecentTracks
