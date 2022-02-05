@@ -3,44 +3,49 @@ import React, {useEffect, useState} from 'react';
 import './App.css';
 
 function App() {
-// const querystring = window.location.search;
-// const urlParams = new URLSearchParams(querystring);
-// const accessToken = urlParams.get('access_token')
-
-// console.log(accessToken)
-
-
-
-return (
-  <div className="App">
-    <h1>Spotify API Recently Played!</h1>
-
-  </div>
-
-);
-}
-
-export default App;
-
-function Callback() {
   const [items,setItems] = useState([]);
 
   useEffect(() => {  
-    fetch('/callback', {
-      headers: {
-        'Authorization' : `Bearer ${token}`
-      }
-    })
-      .then((resp) => {
-        resp.json()
-          .then(result => {
-            setItems(result.items)
-          });
-      })
-    .catch((err) => console.error(err))
+    fetch('/refresh_token')
+      .then(resp => resp.json())
+      .then(items =>setItems(items))
   }, []);
-  return (
-    <>
-    </>
+  return(
+    <div>{items.access_token}</div>
   )
 }
+
+
+// function App() {
+// // const querystring = window.location.search;
+// // const urlParams = new URLSearchParams(querystring);
+// // const accessToken = urlParams.get('access_token')
+
+// // console.log(accessToken)
+//   // const [items,setItems] = useState([]);
+
+//   // useEffect(() => {  
+//   //   const endpoint = 'https://api.spotify.com/v1/me/player/recently-played?limit=5'
+//   //   fetch(endpoint, {
+//   //     headers: {
+//   //       'Authorization' : `Bearer ${token}`
+//   //     }
+//   //   })
+//   //     .then((resp) => {
+//   //       resp.json()
+//   //         .then(result => {
+//   //           setItems(result.items)
+//   //         });
+//   //     })
+//   //   .catch((err) => console.error(err))
+//   // }, []);
+
+// return (
+//   <div className="App">
+//     <h1>Spotify API Recently Played!</h1>
+    
+//   </div>
+// );
+// }
+
+export default App;
