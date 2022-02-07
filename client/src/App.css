@@ -1,38 +1,286 @@
-.App {
-  text-align: center;
+:root {
+  --background: #efefef;
+  --bar: #0453e3;
+  --box-shadow: #6997f5;
+  --box-border: #FBFAFA;
+  --border-color: #9ca1ac;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Border and Box Shadow */
+.blue-border{
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 7px;
+  border-color: #9ca1ac;
+
+  box-shadow: 8px 8px 2px -1.5px var(--box-shadow);
+  background-color: #FBFAFA
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* The grid container */
+.grid-container {
+  margin: 1.5em auto 1.5em auto;
+  
+  display: grid; 
+  grid-template-areas: 
+  'header header header header '
+  'left left  about about'
+  'listening listening about about'
+  'web-project-1 web-project-1 data-project-1 data-project-1'
+  'web-project-2 web-project-2 data-project-2 data-project-2';
+  max-width: 75em;
+  grid-column-gap: 2em;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header {
+  grid-area: header;
+  background-color: var(--bar) ;
+  margin-bottom: 1em;
+  padding: 0em 1em 0em 1em;
+  width: 100%;
+  
+  border-style: ridge;
+  border-width: 2px;
+  border-radius: 10px;
+  border-color: white;
+}
+
+/* header */
+.header h1{
+  display: inline-block;
+  font-family:'Press Start 2P';
+  font-size: 26px;
+  color: white;
+  text-shadow: 
+  0.050em 0.050em 0 yellow,
+  0.075em 0.075em 0 orange,
+} 
+
+
+
+/* first left box */
+.left {
+  grid-area: left;
+  padding: 2em 1.5em 2em 1.5em;
+  height: fit-content;
+
+  margin-left: 2em;
+  margin-top:2em;
+}
+
+.headshot{
+  /* align: center; */
+  float:left;
+  padding-right: 1.5em;
+}
+
+.icons{
+  /* background-color: #D1E2FF; */
+  padding-top: 2.5em;
+  padding-left: 3em;
+  padding-right: 3em;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-between;
+}
+
+/* table inside left */
+.nest-deets{
+  text-align:right;
+  float: right;
+  border: 1px solid var(--box-border);
+  width: 100%;
+}
+td{
+  padding-top: 1.3em;
+  font-family: 'Press Start 2P';
+  font-size: 12.5px;
+}
+.words{
+  padding-left: 1em;
+  text-align: right;
+  font-family: 'IBM Plex Mono';
+  font-size: 14.5px;
+}
+
+
+/* listening */
+
+.listening{
+  grid-area:listening;
+  text-align: center;
+  margin-left: 2em;
+}
+
+.listening-bod{
+  font-family: 'IBM Plex Mono';
+  font-size: 14px;
+}
+
+/* right */
+.about {
+  grid-area: about;
+  padding: 0em 2.5em 1.5em 2.5em;
+}
+
+.blurb{
+  padding-left: 1em;
+}
+
+.about p{
+  font-family: 'IBM Plex Mono';
+  font-size: 15px;
+  line-height: 2.25;
+  letter-spacing: 15%;  
+}
+
+.about > .abt-text{
+  font-size: 25px;
+  font-family: 'Press Start 2P';
+}
+
+
+
+/* PROJECTS PROJECTS PROJECTS */
+
+.proj-header{
+  background-color: var(--bar) ;
+  margin-bottom: 1em;
+  border-width: 2px;
+  border-radius: 5px;
+}
+
+.proj-header p{
+  display: inline-block;
+  font-size: 10px;
+  font-family: 'Press Start 2P';
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.big-txt{
+  font-family: 'Press Start 2P';
+  font-size: 18px;
+  line-height: 1.5em;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.small-txt{
+  font-family: 'IBM Plex Mono';
+  font-size: 15px;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+
+.projects{
+  grid-area: web-project-1;
+  margin: 1em 0em 1em 0em;
+  text-align: center;
+}
+
+/*projects-web development*/
+.web-proj-1{
+  grid-area: web-project-1;
+  margin-left: 2em;
+
+}
+
+.web-proj-2{
+  grid-area: web-project-2;
+  margin-left: 2em;
+
+}
+
+
+/* projects-data analytics */
+
+.data-project-1{
+  grid-area: data-project-1;
+}
+
+.data-project-2{
+  grid-area: data-project-2;
+}
+
+/*resize imgs*/
+#smaller-pics{
+  width: 50%;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media (max-width: 600px) {
+.grid-container  {
+  grid-template-areas: 
+  'header header ' 
+  'left left'
+  'about about'
+  'socials socials '
+  'web-project-1 web-project-1'
+  'web-project-2 web-project-2'
+
+  'data-project-1 data-project-1'
+  'data-project-2 data-project-2';
+}
+
+.blue-border{
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 7px;
+  border-color: var(--bar);
+  box-shadow: none;
+  background-color: #FBFAFA
+}
+
+.header{
+  width: 90%;
+  text-align: center;
+  margin-right: 1em;
+}
+
+.left{
+  margin: 0 0em 2em 0em;
+}
+
+.about{
+  padding: 0em 1.5em 1.5em 1em;
+  text-align: center;
+}
+
+.about p{
+  font-family: 'IBM Plex Mono';
+  font-size: 15px;
+  line-height: 2;
+  /* letter-spacing: 15%;   */
+}
+
+.abt-text{
+font-size: 40px ;
+}
+
+.socials{
+  margin-left: 0em;
+  margin-top: 1em;
+}
+
+.headshot{
+float: none;
+margin-left: 25%;
+margin-right: 25%;
+padding-right: 0;
+} 
+
+#smaller-pics{
+  width: 90%
+}
+
+.big-txt{
+  padding-right: 1em;
+  /* padding-left: 1em; */
+}
+
+.small-txt{
+  margin-bottom: 2em;
+}
 }
