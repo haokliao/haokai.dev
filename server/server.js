@@ -21,49 +21,43 @@ const redirect_uri = process.env.REDIRECT_URI
 app.get("/callback", (req, res) => {
 });
 
-app.get('/recently_played', (req, res) => {
+app.get('/recently_played', async (req, res) => {
   const refresh_token = process.env.TOKEN;
 
-  axios({
-    method: 'post',
-    url: 'https://accounts.spotify.com/api/token',
-    data: querystring.stringify({
-      grant_type: 'refresh_token',
-      refresh_token: refresh_token
-    }),
-    headers: {
-      'content-type': 'application/x-www-form-urlencoded',
-        Authorization: `Basic ${new Buffer.from(`${client_id}:${client_secret}`).toString('base64')}`,
-    }
-  })
-  // second resp
-  .then(response => {
-    access_token = response.data.access_token
-    return axios({
-      method: 'get',
-      url: 'https://api.spotify.com/v1/me/player/recently-played',
-      headers: {
-        // 'content-type': 'application/x-www-form-urlencoded',
-          Authorization: `Bearer ${access_token}`,
+  try{
+    const accessToken = await axios(
+      {
+        method: 'post',
+        url: 'https://accounts.spotify.com/api/token',
+        data: querystring.stringify({
+          grant_type: 'refresh_token',
+          refresh_token: refresh_token
+        }),
+        headers: {
+          'content-type': 'application/x-www-form-urlencoded',
+          Authorization: `Basic ${new Buffer.from(`${client_id}:${client_secret}`).toString('base64')}`,
+        }
       }
-    })
-    .then((recentlyPlayedResponse) => recentlyPlayedResponse.json())    
-      .then((recentlyPlayedResponseJSON) => {
-        console.log(recentlyPlayedResponseJSON)
-        res.json(recentlyPlayedResponseJSON)
-      })
-    // .then((recentlyPlayedResponse) => {
-      
-    //   res.send(recentlyPlayedResponse)
-    // })
-    // .then((recentlyPlayedResponseJSON) => {
-    //   res.send(recentlyPlayedResponseJSON)
-    // })
+    )
+    .then(resp => resp.data.access_token)
 
-  })
-  .catch(error => {
-    res.send(error);
-  })
+  // second resp
+    const RecentlyPlayedData = await axios(
+      {
+        method: 'get',
+        url: 'https://api.spotify.com/v1/me/player/recently-played',
+        headers: {
+            Authorization: `Bearer ${accessToken}`,
+        }
+      })
+    .then(resp => resp.data)
+    console.log(RecentlyPlayedData)
+    res.status(200).send({payload: RecentlyPlayedData}).end()
+    }
+    catch (e) {
+      console.error(e)
+      res.status(400).send({message:'error'});
+  }
   });
 
 
