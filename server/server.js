@@ -45,7 +45,7 @@ app.get('/recently_played', async (req, res) => {
     const RecentlyPlayedData = await axios(
       {
         method: 'get',
-        url: 'https://api.spotify.com/v1/me/player/recently-played',
+        url: 'https://api.spotify.com/v1/me/player/recently-played?limit=2',
         headers: {
             Authorization: `Bearer ${accessToken}`,
         }
@@ -84,35 +84,6 @@ app.get('/recently_played', async (req, res) => {
       });
     });
   
-
-// const getRecentlyPlayed = () => {
-//   axios({
-//     method: 'get',
-//     url: 'https://api.spotify.com/v1/me/player/recently-played',
-//     headers: {
-//     Authorization: `Bearer ${getAccessToken}`
-// },
-//   })
-
-// }
-
-// app.get('/api', function(req,res){
-//   getRecentlyPlayed()
-//   .then((resp) => resp.json()
-//   )
-//     .then((result) => {
-//       res.send(result);
-//     })
-
-// }
-// )
-
-  // let access_token = await api.request
-// client frontend handler getRecentTracks
-// token back and use it to the endpoint
-// take that info and send back to frontend
-// garbage collected
-
 
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
