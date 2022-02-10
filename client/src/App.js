@@ -34,9 +34,13 @@ function App() {
         
       },
       name: 'Rodeo Clown',
+      external_urls: {
+        spotify: 'https://open.spotify.com/track/1km9AsmFeKZpeR4VvPYsJh'
+      }
     }
   }
   ]);
+
   useEffect(() => {
   fetch('/recently_played')
   .then((resp) => {
@@ -103,7 +107,10 @@ function App() {
           <img src = {tracks[0].track.album.images[2].url} alt ='album_cover'/>
         </div>
         <div className='listening-text'>
-          {tracks[0].track.name} by <a href={tracks[0].track.album.artists[0].external_urls.spotify}>{tracks[0].track.album.artists[0].name}</a>
+          <a href={tracks[0].track.external_urls.spotify} target='_blank' rel='noreferrer'>
+            {tracks[0].track.name}
+          </a>
+          <span> by</span> {tracks[0].track.album.artists[0].name}
         </div>
       </div> 
     </div>
