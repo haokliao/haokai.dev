@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Press+Start+2P&display=swap');
+
 :root {
   --background: #efefef;
   --bar: #0453e3;
@@ -83,6 +85,10 @@
   justify-content: space-between;
 }
 
+.icons :hover{
+  background-color: #ccc;
+}
+
 /* table inside left */
 .nest-deets{
   text-align:right;
@@ -111,9 +117,21 @@ td{
   margin-left: 2em;
 }
 
-.listening-bod{
+.listening-container{
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+
+.listening-album{
+  padding-top: 1.5em;
+}
+
+.listening-text{
   font-family: 'IBM Plex Mono';
-  font-size: 14px;
+  font-size: 17px;
+  padding-left: 2em;
+  padding-top: 1em;
 }
 
 /* right */
