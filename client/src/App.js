@@ -42,12 +42,13 @@ function App() {
   ]);
 
   useEffect(() => {
-  fetch('/recently_played')
-  .then((resp) => {
-    resp.json()
-    .then(tracks =>getTracks(tracks.payload.items))
-    })
-    .catch((err) => console.error(err))
+    document.title = 'Hao Kai Liao'
+    fetch('/recently_played')
+    .then((resp) => {
+      resp.json()
+      .then(tracks =>getTracks(tracks.payload.items))
+      })
+      .catch((err) => console.error(err))
   }, []);
 
   return(
@@ -99,21 +100,11 @@ function App() {
       </div>
     </div>
 
-    <div className='listening'>
-      <div className='big-txt'>
-        <a href='https://open.spotify.com/user/1242975125'>I’m</a> currently listening to..</div>       
-      <div className='listening-container'>
-        <div className='listening-album'>
-          <img src = {tracks[0].track.album.images[2].url} alt ='album_cover'/>
-        </div>
-        <div className='listening-text'>
-          <a href={tracks[0].track.external_urls.spotify} target='_blank' rel='noreferrer'>
-            {tracks[0].track.name}
-          </a>
-          <span> by</span> {tracks[0].track.album.artists[0].name}
-        </div>
-      </div> 
-    </div>
+    <RecentlyPlayed
+      artistsname={tracks[0].track.album.artists[0].name}
+      tracksname={tracks[0].track.name}
+      trackurl={tracks[0].track.external_urls.spotify}
+      albumart={tracks[0].track.album.images[2].url}/>
 
     <div className="web-proj-1 projects blue-border">
       <div className='proj-header'>
@@ -178,6 +169,29 @@ function App() {
   </div> 
 </>
   )
+}
+
+function RecentlyPlayed(props) {
+  return (
+    <>
+        <div className='listening'>
+      <div className='big-txt'>
+        <a href='https://open.spotify.com/user/1242975125'>I’m</a> currently listening to..</div>       
+      <div className='listening-container'>
+        <div className='listening-album'>
+          <img src = {props.albumart} alt ='album_cover'/>
+        </div>
+        <div className='listening-text'>
+          <a href={props.trackurl} target='_blank' rel='noreferrer'>
+            {props.tracksname}
+          </a>
+          <span> by</span> {props.artistsname}
+        </div>
+      </div> 
+    </div>
+    </>
+  )
+
 }
 
 export default App;
