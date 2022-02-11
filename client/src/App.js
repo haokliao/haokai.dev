@@ -17,7 +17,7 @@ function App() {
           },
           {
             empty2: '',
-            url: 'https://i.scdn.co/image/ab67616d00001e028dbdac761ce552c2ac7d69e1'
+            url: 'https://i.scdn.co/image/ab67616d000048518dbdac761ce552c2ac7d69e1'
           }
         ],
         artists: 
