@@ -212,6 +212,7 @@ td{
 
 .data-project-1{
   grid-area: data-project-1;
+  
 }
 
 .data-project-2{
@@ -230,11 +231,12 @@ td{
 /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
 @media (max-width: 600px) {
 .grid-container  {
+  /* align-content: center; */
   grid-template-areas: 
   'header header ' 
   'left left'
   'about about'
-  'socials socials '
+  'listening listening '
   'web-project-1 web-project-1'
   'web-project-2 web-project-2'
 
@@ -252,17 +254,16 @@ td{
 }
 
 .header{
-  width: 90%;
   text-align: center;
-  margin-right: 1em;
+  margin-left: 0em;
 }
 
 .left{
-  margin: 0 0em 2em 0em;
+  margin: 1em 0em 2em 0em;
 }
 
 .about{
-  padding: 0em 1.5em 1.5em 1em;
+  padding: 0em 1em 1.5em 1em;
   text-align: center;
 }
 
@@ -277,8 +278,8 @@ td{
 font-size: 40px ;
 }
 
-.socials{
-  margin-left: 0em;
+.listening{
+  margin-left: 1em;
   margin-top: 1em;
 }
 
@@ -300,5 +301,13 @@ padding-right: 0;
 
 .small-txt{
   margin-bottom: 2em;
+}
+
+.web-proj-1{
+  margin-left: 0em;
+}
+
+.web-proj-2{
+  margin-left: 0em;
 }
 }
