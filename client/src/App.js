@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 // import {Routes, Route, Link} from "react-router-dom";
 import './App.css';
+import HKL_resume from './imgs/HKL_resume.pdf'
 
 function App() {
 
@@ -76,15 +77,15 @@ function App() {
       </table>
 
       <div className='icons'>
-        <a href={require('./imgs/HKL_resume.pdf')} target='_blank' rel='noreferrer'
+        <a href={HKL_resume} target='_blank' rel='noreferrer'
           className='text-decoration-none' title='Resume!'>
           <img src= {require('./imgs/resume_icon.png')} style={{cursor:'pointer'}} className='project-imgs' alt='Resume PDF Icon'/>
         </a>
-        <a href='https://www.linkedin.com/in/haokliao/'
+        <a href='https://www.linkedin.com/in/haokliao/' target='_blank' rel='noreferrer'
           className ='text-decoration-none text-linkedin' title='Linkedin'>
           <img src= {require('./imgs/li_icon.png')} className='project-imgs' alt='find me on Linkedin, @haokliao'/>
         </a>
-        <a href='https://www.github.com/haokliao' 
+        <a href='https://www.github.com/haokliao'  target='_blank' rel='noreferrer'
           className='text-decoration-nonetext-github text-decoration-none' title='Github' >
           <img src= {require('./imgs/github_icon.png')} className='project-imgs' alt='find me on github, @haokliao'/>
         </a>
