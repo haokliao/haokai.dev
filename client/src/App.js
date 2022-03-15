@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 // import {Routes, Route, Link} from "react-router-dom";
 import './App.css';
-import HKL_resume from './imgs/HKL_resume.pdf'
+import HKL_resume from './imgs/HKL_Resume_3_14.pdf'
 
 function App() {
 
@@ -29,7 +29,7 @@ function App() {
               }
             },
             {
-            name: 'Dijon',
+            name: 'Dijon'
             }
           ]
         
@@ -107,22 +107,38 @@ function App() {
       trackurl={tracks[0].track.external_urls.spotify}
       albumart={tracks[0].track.album.images[2].url}/>
 
-    <div className="web-proj-1 projects blue-border">
+    <div className='web-proj-1 projects blue-border'>
       <div className='proj-header'>
         <p>Projects - Web Development</p>        
       </div>
-      <span className='project-slices'>
+      <div className='project-GHgato'>
+          <p className='big-txt'>Github Gato</p>
+          <p className='small-txt'>React, HTML, CSS, Figma</p>
+          <p className='small-txt'>HackNYU 2022 Winner for Best First Time Hack!
+          Small web app designed within 48 hours for HackNYU's Hackathon.
+          </p>
+          <a href='https://ghgato.github.io/GitHubGato/' >
+          <img src={require('./imgs/gh_gato.jpg')} id='smaller-pics' alt='Github Gato Image'/>
+          </a>
+        </div>
+    </div>
+
+    <div className="web-proj-2 projects blue-border">
+      <div className='proj-header'>
+        <p>Projects - Web Development</p>        
+      </div>
+      <span className='project-udecide'>
         <p className='big-txt'>uDecide</p>
-        <p className='small-txt'>React, CSS, HTML, CSS, PostgreSQL</p>
+        <p className='small-txt'>React, HTML, CSS, PostgreSQL, Figma</p>
         <p className='small-txt'>A website designed to help YOU make decisions!</p>
         <p className='small-txt'>CUNY Tech Prep semester end group project</p>
         <a href='https://github.com/haokliao/uDecide' >
-          <img src={require('./imgs/uDecide.png')} className='slices-img' id='smaller-pics' alt='Slices Project'/>
+          <img src={require('./imgs/uDecide.png')}  id='smaller-pics' alt='uDecide Screencap'/>
         </a>
       </span>
     </div>
 
-    <div className="web-proj-2 projects blue-border">
+    <div className="web-proj-3 projects blue-border">
       <div className='proj-header'>
         <p>Projects - Web Development</p>        
       </div>
@@ -131,12 +147,12 @@ function App() {
         <p className='small-txt'>Figma, HTML, CSS</p>
         <p className='small-txt'>Small fruit themed blog site featuring musings on music. inspired by manila-folders!</p>
         <a href='https://github.com/haokliao/slices' >
-          <img src={require('./imgs/slices.png')} className='slices-img' id='smaller-pics' alt='Slices Project'/>
+          <img src={require('./imgs/slices.png')}  id='smaller-pics' alt='Slices Project'/>
         </a>
       </span>
     </div>
 
-    <div className="data-project-1 projects blue-border">
+    <div className="data-proj-1 projects blue-border">
       <div className='proj-header'>
         <p>Projects - Data Analytics</p>        
       </div>
@@ -150,22 +166,6 @@ function App() {
       </span>
     </div>
 
-    <div className='data-project-2 projects blue-border'>
-      <div className='proj-header'>
-        <p>Projects - Data Analytics</p>        
-      </div>
-      <div className='project-climbdiscvis'>
-          <p className='big-txt'>Climbing Disciplines<br/>
-              Visualization</p>
-          <p className='small-txt'>Pandas, iPyWidgets, Seaborn, Poetry</p>
-          <p className='small-txt'>Interactive data vis done through crowd sourcing local climbers
-              and their grades in three different climbing disciplines
-              (bouldering, toprope, lead)</p>
-          <a href='https://github.com/haokliao/Climbing-Disciplines-Vis' >
-          <img src={require('./imgs/bouldering_img_1.png')} id='smaller-pics' alt='Climbing Disciplines Project'/>
-          </a>
-        </div>
-    </div>
 
   </div> 
 </>
