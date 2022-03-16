@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-// import {Routes, Route, Link} from "react-router-dom";
+import { Helmet } from 'react-helmet';
 import './App.css';
 import HKL_resume from './imgs/HKL_Resume_3_14.pdf'
 
@@ -55,6 +55,13 @@ function App() {
   return(
 <>
   <div className="grid-container">
+    <Helmet>
+      <title>Hao Kai Liao</title>
+      <meta name="description" content="Hao Kai Liao's Personal Site" />
+      <meta name="theme-color" content="#fffff" />
+      {/* <meta name="image" property='og:image' content={require('./imgs/hkl_headshot.png')}/> */}
+    </Helmet>
+
     <div className='header'>
       <h1 >Hao Kai Liao</h1>
     </div>
@@ -118,7 +125,7 @@ function App() {
           Small web app designed within 48 hours for HackNYU's Hackathon.
           </p>
           <a href='https://ghgato.github.io/GitHubGato/' >
-          <img src={require('./imgs/gh_gato.jpg')} id='smaller-pics' alt='Github Gato Image'/>
+          <img src={require('./imgs/gh_gato.jpg')} id='smaller-pics' alt='Github Gato'/>
           </a>
         </div>
     </div>
