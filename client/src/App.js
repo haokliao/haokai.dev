@@ -2,6 +2,52 @@ import React, {useEffect, useState} from 'react';
 import { Helmet } from 'react-helmet';
 import './App.css';
 import HKL_resume from './imgs/HKL_Resume_3_14.pdf'
+import {PROJECTS} from './data.js'
+
+function RecentlyPlayed(props) {
+  return (
+    <>
+        <div className='listening'>
+      <div className='big-txt'>
+        <a href='https://open.spotify.com/user/1242975125'>I’m</a> currently listening to..</div>       
+      <div className='listening-container'>
+        <div className='listening-album'>
+          <img src = {props.albumart} alt ='album_cover'/>
+        </div>
+        <div className='listening-text'>
+          <a href={props.trackurl} target='_blank' rel='noreferrer'>
+            {props.tracksname}
+          </a>
+          <span> by</span> {props.artistsname}
+        </div>
+      </div> 
+    </div>
+    </>
+  )
+
+}
+
+function Projects(props){
+  return(
+    <section>
+      <div className='proj-header'>
+        <p>Projects - Web Development</p>        
+      </div>
+
+      <div>
+        <p className='big-txt'>{props.title}</p>
+        <p className='small-txt'>{props.tech}</p>
+        <p className='small-txt'>{props.description}
+        </p>
+        <a href={props.link} >
+        <img src={require('../src/' + props.img)} id='smaller-pics' alt='project thumbnail'/>
+        </a>
+      </div>
+    </section>
+
+  )
+}
+
 
 function App() {
 
@@ -26,13 +72,10 @@ function App() {
             {
               external_urls: {
                 spotify: 'https://open.spotify.com/artist/0knGpCTbmG4ctl1wzYRZs4'
-              }
+              },
+              name: 'Dijon'
             },
-            {
-            name: 'Dijon'
-            }
-          ]
-        
+          ],
       },
       name: 'Rodeo Clown',
       external_urls: {
@@ -55,6 +98,7 @@ function App() {
   return(
 <>
   <div className="grid-container">
+
     <Helmet>
       <title>Hao Kai Liao</title>
       <meta name="description" content="Hao Kai Liao's Personal Site" />
@@ -114,92 +158,56 @@ function App() {
       trackurl={tracks[0].track.external_urls.spotify}
       albumart={tracks[0].track.album.images[2].url}/>
 
+
     <div className='web-proj-1 projects blue-border'>
-      <div className='proj-header'>
-        <p>Projects - Web Development</p>        
-      </div>
-      <div className='project-GHgato'>
-          <p className='big-txt'>Github Gato</p>
-          <p className='small-txt'>React, HTML, CSS, Figma</p>
-          <p className='small-txt'>HackNYU 2022 Winner for Best First Time Hack!
-          Small web app designed within 48 hours for HackNYU's Hackathon.
-          </p>
-          <a href='https://ghgato.github.io/GitHubGato/' >
-          <img src={require('./imgs/gh_gato.jpg')} id='smaller-pics' alt='Github Gato'/>
-          </a>
-        </div>
+      <Projects 
+        type = {PROJECTS[0].type}
+        title = {PROJECTS[0].title}
+        tech = {PROJECTS[0].tech}
+        description = {PROJECTS[0].description}
+        link = {PROJECTS[0].link}
+        img = {PROJECTS[0].img}
+        />
     </div>
 
     <div className="web-proj-2 projects blue-border">
-      <div className='proj-header'>
-        <p>Projects - Web Development</p>        
-      </div>
-      <span className='project-udecide'>
-        <p className='big-txt'>uDecide</p>
-        <p className='small-txt'>React, HTML, CSS, PostgreSQL, Figma</p>
-        <p className='small-txt'>A website designed to help YOU make decisions!</p>
-        <p className='small-txt'>CUNY Tech Prep semester end group project</p>
-        <a href='https://github.com/haokliao/uDecide' >
-          <img src={require('./imgs/uDecide.png')}  id='smaller-pics' alt='uDecide Screencap'/>
-        </a>
-      </span>
+      <Projects 
+        type = {PROJECTS[1].type}
+        title = {PROJECTS[1].title}
+        tech = {PROJECTS[1].tech}
+        description = {PROJECTS[1].description}
+        link = {PROJECTS[1].link}
+        img = {PROJECTS[1].img}
+      />
     </div>
 
     <div className="web-proj-3 projects blue-border">
-      <div className='proj-header'>
-        <p>Projects - Web Development</p>        
-      </div>
-      <span className='project-slices'>
-        <p className='big-txt'>Slices (Work in Progress)</p>
-        <p className='small-txt'>Figma, HTML, CSS</p>
-        <p className='small-txt'>Small fruit themed blog site featuring musings on music. inspired by manila-folders!</p>
-        <a href='https://github.com/haokliao/slices' >
-          <img src={require('./imgs/slices.png')}  id='smaller-pics' alt='Slices Project'/>
-        </a>
-      </span>
+      <Projects 
+        type = {PROJECTS[2].type}
+        title = {PROJECTS[2].title}
+        tech = {PROJECTS[2].tech}
+        description = {PROJECTS[2].description}
+        link = {PROJECTS[2].link}
+        img = {PROJECTS[2].img}
+      />
     </div>
 
     <div className="data-proj-1 projects blue-border">
-      <div className='proj-header'>
-        <p>Projects - Data Analytics</p>        
-      </div>
-      <span className='project-critforcevis'>
-          <p className='big-txt'>Critical Force Visualization<br/></p>
-          <p className='small-txt'>Pandas, Seaborn, Matplotlib, Conda</p>
-          <p className='small-txt'>Data Visualizations done based on data from Lattice Training's paper (Climbing Critical Force Data, Giles et al 2020)</p>
-          <a href='https://github.com/haokliao/Critical-Force-Visualization' >
-          <img src={require('./imgs/cf-vis.png')} id='smaller-pics' alt='Critical Force Visualization Project'/>
-          </a>
-      </span>
+      <Projects 
+        type = {PROJECTS[3].type}
+        title = {PROJECTS[3].title}
+        tech = {PROJECTS[3].tech}
+        description = {PROJECTS[3].description}
+        link = {PROJECTS[3].link}
+        img = {PROJECTS[3].img}
+      />
     </div>
-
 
   </div> 
 </>
   )
 }
 
-function RecentlyPlayed(props) {
-  return (
-    <>
-        <div className='listening'>
-      <div className='big-txt'>
-        <a href='https://open.spotify.com/user/1242975125'>I’m</a> currently listening to..</div>       
-      <div className='listening-container'>
-        <div className='listening-album'>
-          <img src = {props.albumart} alt ='album_cover'/>
-        </div>
-        <div className='listening-text'>
-          <a href={props.trackurl} target='_blank' rel='noreferrer'>
-            {props.tracksname}
-          </a>
-          <span> by</span> {props.artistsname}
-        </div>
-      </div> 
-    </div>
-    </>
-  )
 
-}
 
 export default App;
