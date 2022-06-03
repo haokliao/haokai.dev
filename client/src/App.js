@@ -29,27 +29,41 @@ function RecentlyPlayed(props) {
 
 function Projects(props){
   return(
-    <section>
-      <div className='proj-header'>
-        <p>Projects - Web Development</p>        
-      </div>
+    <div className= {'projects blue-border ' + props.grid}>
+        <div className='proj-header'>
+          <p>Projects - Web Development</p>        
+        </div>
 
-      <div>
-        <p className='big-txt'>{props.title}</p>
-        <p className='small-txt'>{props.tech}</p>
-        <p className='small-txt'>{props.description}
-        </p>
-        <a href={props.link} >
-        <img src={require('../src/' + props.img)} id='smaller-pics' alt='project thumbnail'/>
-        </a>
-      </div>
-    </section>
+        <div>
+          <p className='big-txt'>{props.title}</p>
+          <p className='small-txt'>{props.tech}</p>
+          <p className='small-txt'>{props.description}
+          </p>
+          <a href={props.link} >
+          <img src={require('../src/' + props.img)} id='smaller-pics' alt='project thumbnail'/>
+          </a>
+        </div>
+    </div>
 
   )
 }
 
 
 function App() {
+
+  const projectElements = PROJECTS.map(proj => {
+    return <Projects 
+        type = {proj.type}
+        title = {proj.title}
+        tech = {proj.tech}
+        description = {proj.description}
+        link = {proj.link}
+        img = {proj.img}
+        grid = {proj.grid}
+        />
+      })
+    
+
 
   const [tracks,getTracks] = useState([
   {
@@ -158,50 +172,7 @@ function App() {
       trackurl={tracks[0].track.external_urls.spotify}
       albumart={tracks[0].track.album.images[2].url}/>
 
-
-    <div className='web-proj-1 projects blue-border'>
-      <Projects 
-        type = {PROJECTS[0].type}
-        title = {PROJECTS[0].title}
-        tech = {PROJECTS[0].tech}
-        description = {PROJECTS[0].description}
-        link = {PROJECTS[0].link}
-        img = {PROJECTS[0].img}
-        />
-    </div>
-
-    <div className="web-proj-2 projects blue-border">
-      <Projects 
-        type = {PROJECTS[1].type}
-        title = {PROJECTS[1].title}
-        tech = {PROJECTS[1].tech}
-        description = {PROJECTS[1].description}
-        link = {PROJECTS[1].link}
-        img = {PROJECTS[1].img}
-      />
-    </div>
-
-    <div className="web-proj-3 projects blue-border">
-      <Projects 
-        type = {PROJECTS[2].type}
-        title = {PROJECTS[2].title}
-        tech = {PROJECTS[2].tech}
-        description = {PROJECTS[2].description}
-        link = {PROJECTS[2].link}
-        img = {PROJECTS[2].img}
-      />
-    </div>
-
-    <div className="data-proj-1 projects blue-border">
-      <Projects 
-        type = {PROJECTS[3].type}
-        title = {PROJECTS[3].title}
-        tech = {PROJECTS[3].tech}
-        description = {PROJECTS[3].description}
-        link = {PROJECTS[3].link}
-        img = {PROJECTS[3].img}
-      />
-    </div>
+    {projectElements}
 
   </div> 
 </>

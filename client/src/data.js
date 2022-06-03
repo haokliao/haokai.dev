@@ -5,6 +5,7 @@
 
 export const PROJECTS = [
   {
+    grid: "web-proj-1",
     type: "Web Development",
     title: "Github Gato",
     tech: "React, HTML, CSS, Figma",
@@ -13,27 +14,30 @@ export const PROJECTS = [
     img: 'imgs/gh_gato.jpg'
   },
   {
-  type: "Web Development",
-  title: "uDecide",
-  tech: "React, HTML, CSS, PostgreSQL, Figma",
-  description: "A website designed to help YOU make decisions! CUNY Tech Prep semester end group project.",
-  link: {},
-  img: 'imgs/uDecide.png'
+    grid: "web-proj-2",
+    type: "Web Development",
+    title: "uDecide",
+    tech: "React, HTML, CSS, PostgreSQL, Figma",
+    description: "A website designed to help YOU make decisions! CUNY Tech Prep semester end group project.",
+    link: {},
+    img: 'imgs/uDecide.png'
   },
   {
-  type: "Web Development",
-  title: "Slices (Work in Progress)",
-  tech: "Figma",
-  description: "Small fruit themed blog site featuring musings on music. Inspired by manila-folders!",
-  link: {},
-  img: 'imgs/slices.png'
+    grid: "web-proj-3",
+    type: "Web Development",
+    title: "Slices (Work in Progress)",
+    tech: "Figma",
+    description: "Small fruit themed blog site featuring musings on music. Inspired by manila-folders!",
+    link: {},
+    img: 'imgs/slices.png'
   },
   {
-  type: "Data Analytics",
-  title: "Critical Force Visualization",
-  tech: "Pandas, Seaborn, Matplotlib, Conda",
-  description: "Data Visualizations done based on data from Lattice Training's paper (Climbing Critical Force Data, Giles et al 2020)",
-  link: {},
-  img: 'imgs/cf-vis.png'
+    grid: "data-proj-1",
+    type: "Data Analytics",
+    title: "Critical Force Visualization",
+    tech: "Pandas, Seaborn, Matplotlib, Conda",
+    description: "Data Visualizations done based on data from Lattice Training's paper (Climbing Critical Force Data, Giles et al 2020)",
+    link: {},
+    img: 'imgs/cf-vis.png'
   }
 ];
