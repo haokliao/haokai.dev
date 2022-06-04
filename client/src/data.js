@@ -5,6 +5,7 @@
 
 export const PROJECTS = [
   {
+    id: 1,
     grid: "web-proj-1",
     type: "Web Development",
     title: "Github Gato",
@@ -14,6 +15,7 @@ export const PROJECTS = [
     img: 'imgs/gh_gato.jpg'
   },
   {
+    id: 2,
     grid: "web-proj-2",
     type: "Web Development",
     title: "uDecide",
@@ -23,6 +25,7 @@ export const PROJECTS = [
     img: 'imgs/uDecide.png'
   },
   {
+    id: 3,
     grid: "web-proj-3",
     type: "Web Development",
     title: "Slices (Work in Progress)",
@@ -31,7 +34,8 @@ export const PROJECTS = [
     link: {},
     img: 'imgs/slices.png'
   },
-  {
+  {    
+    id: 4,
     grid: "data-proj-1",
     type: "Data Analytics",
     title: "Critical Force Visualization",

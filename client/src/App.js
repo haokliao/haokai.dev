@@ -29,18 +29,18 @@ function RecentlyPlayed(props) {
 
 function Projects(props){
   return(
-    <div className= {'projects blue-border ' + props.grid}>
+    <div className= {'projects blue-border ' + props.items.grid}>
         <div className='proj-header'>
           <p>Projects - Web Development</p>        
         </div>
 
         <div>
-          <p className='big-txt'>{props.title}</p>
-          <p className='small-txt'>{props.tech}</p>
-          <p className='small-txt'>{props.description}
+          <p className='big-txt'>{props.items.title}</p>
+          <p className='small-txt'>{props.items.tech}</p>
+          <p className='small-txt'>{props.items.description}
           </p>
-          <a href={props.link} >
-          <img src={require('../src/' + props.img)} id='smaller-pics' alt='project thumbnail'/>
+          <a href={props.items.link} >
+          <img src={require('../src/' + props.items.img)} id='smaller-pics' alt='project thumbnail'/>
           </a>
         </div>
     </div>
@@ -53,13 +53,8 @@ function App() {
 
   const projectElements = PROJECTS.map(proj => {
     return <Projects 
-        type = {proj.type}
-        title = {proj.title}
-        tech = {proj.tech}
-        description = {proj.description}
-        link = {proj.link}
-        img = {proj.img}
-        grid = {proj.grid}
+        key = {proj.id}
+        items = {proj}
         />
       })
     
@@ -133,7 +128,7 @@ function App() {
             <td >You can call me..</td>
             <td className="words">Kevin / Kai</td>
           </tr>
-          <tr></tr>
+          <tr/>
           <tr>
             <td>I’m located in..</td>
             <td className="words">Queens, NY</td>
