@@ -1,7 +1,7 @@
 import React  from 'react';
 import { Helmet } from 'react-helmet';
 import './App.css';
-import HKL_resume from './imgs/HKL_Resume_3_14.pdf'
+import HKL_resume from './imgs/HKL_resume.pdf'
 import {PROJECTS} from './data.js'
 import RecentlyPlayed from './components/RecentlyPlayed';
 import Projects from './components/Projects';

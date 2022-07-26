@@ -48,10 +48,6 @@ export default function RecentlyPlayed(props) {
       .catch((err) => console.error(err))
   }, []);
 
-
-
-
-
   return (
     <>
     <div className='listening'>
